@@ -7,8 +7,55 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-<link rel="stylesheet" href="styles.7cc2dc8e9ea5794597a3.css"></head>
-<body>
+  <link rel="stylesheet" type="text/css" href="/assets/mxgraph/styles/grapheditor.css">
+  <script type="text/javascript">
+    // Parses URL parameters. Supported parameters are:
+    // - lang=xy: Specifies the language of the user interface.
+    // - touch=1: Enables a touch-style user interface.
+    // - storage=local: Enables HTML5 local storage.
+    // - chrome=0: Chromeless mode.
+    var urlParams = (function (url) {
+      var result = new Object();
+      var idx = url.lastIndexOf('?');
+
+      if (idx > 0) {
+        var params = url.substring(idx + 1).split('&');
+
+        for (var i = 0; i < params.length; i++) {
+          idx = params[i].indexOf('=');
+
+          if (idx > 0) {
+            result[params[i].substring(0, idx)] = params[i].substring(idx + 1);
+          }
+        }
+      }
+
+      return result;
+    })(window.location.href);
+
+    // Default resources are included in grapheditor resources
+    mxLoadResources = false;
+  </script>
+  <script type="text/javascript" src="/assets/mxgraph/js/Init.js"></script>
+  <script type="text/javascript" src="/assets/mxgraph/deflate/pako.min.js"></script>
+  <script type="text/javascript" src="/assets/mxgraph/deflate/base64.js"></script>
+  <script type="text/javascript" src="/assets/mxgraph/jscolor/jscolor.js"></script>
+  <script type="text/javascript" src="/assets/mxgraph/sanitizer/sanitizer.min.js"></script>
+  <script type="text/javascript" src="/assets/mxgraph/js/mxClient.js"></script>
+  <script type="text/javascript" src="/assets/mxgraph/js/EditorUi.js"></script>
+  <script type="text/javascript" src="/assets/mxgraph/js/Editor.js"></script>
+  <script type="text/javascript" src="/assets/mxgraph/js/Sidebar.js"></script>
+  <script type="text/javascript" src="/assets/mxgraph/js/Graph.js"></script>
+  <script type="text/javascript" src="/assets/mxgraph/js/Format.js"></script>
+  <script type="text/javascript" src="/assets/mxgraph/js/Shapes.js"></script>
+  <script type="text/javascript" src="/assets/mxgraph/js/Actions.js"></script>
+  <script type="text/javascript" src="/assets/mxgraph/js/Menus.js"></script>
+  <script type="text/javascript" src="/assets/mxgraph/js/Toolbar.js"></script>
+  <script type="text/javascript" src="/assets/mxgraph/js/Dialogs.js"></script>
+  <script type="text/javascript" src="/assets/mxgraph/startup.js"></script>
+
+<link rel="stylesheet" href="styles.9867934e9a6713b1fb64.css"></head>
+<body class="geEditor">
 <app-root></app-root>
-<script src="runtime.5bc68c0dd8cf137fbe82.js" defer></script><script src="polyfills.ee7271628204d64ffe17.js" defer></script><script src="main.5eebd8a1a999a1ba519e.js" defer></script></body>
+<script src="runtime.5bc68c0dd8cf137fbe82.js" defer></script><script src="polyfills.ee7271628204d64ffe17.js" defer></script><script src="main.f17fe839ffec8a10f16d.js" defer></script></body>
 </html>
