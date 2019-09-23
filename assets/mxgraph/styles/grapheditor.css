@@ -265,7 +265,6 @@
 }
 
 .geMenubarContainer, .geToolbarContainer, .geHsplit, .geVsplit {
-  background-color: #fbfbfb;
 }
 
 .geMenubar {
@@ -395,7 +394,6 @@ div.mxWindow .geButton {
 }
 
 .geSidebarContainer {
-  background: #fbfbfb;
   overflow: hidden;
   position: absolute;
   overflow: auto;
