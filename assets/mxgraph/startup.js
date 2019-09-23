@@ -1,6 +1,5 @@
 // Extends EditorUi to update I/O action states based on availability of backend
 function loadGraphEditor(container) {
-  mxClient.IS_QUIRKS = true;
   var editorUiInit = EditorUi.prototype.init;
 
   EditorUi.prototype.init = function () {
@@ -26,18 +25,21 @@ function loadGraphEditor(container) {
   var bundle = mxResources.getDefaultBundle(mxBasePath + '/' + RESOURCE_BASE, mxLanguage) ||
     mxResources.getSpecialBundle(mxBasePath + '/' + RESOURCE_BASE, mxLanguage);
 
-  // Fixes possible asynchronous requests
-  mxUtils.getAll([bundle, mxBasePath + '/' + STYLE_PATH + '/default.xml'], function (xhr) {
-    // Adds bundle text to resources
-    mxResources.parse(xhr[0].getText());
+  return new Promise((resolve, reject) => {
+    // Fixes possible asynchronous requests
+    mxUtils.getAll([bundle, mxBasePath + '/' + STYLE_PATH + '/default.xml'], function (xhr) {
+      // Adds bundle text to resources
+      mxResources.parse(xhr[0].getText());
 
-    // Configures the default graph theme
-    var themes = new Object();
-    themes[Graph.prototype.defaultThemeName] = xhr[1].getDocumentElement();
+      // Configures the default graph theme
+      var themes = new Object();
+      themes[Graph.prototype.defaultThemeName] = xhr[1].getDocumentElement();
 
-    // Main
-    new EditorUi(new Editor(urlParams['chrome'] == '0', themes), container);
-  }, function () {
-    document.body.innerHTML = '<center style="margin-top:10%;">Error loading resource files. Please check browser console.</center>';
+      // Main
+      var editor = new EditorUi(new Editor(urlParams['chrome'] == '0', themes), container);
+      resolve(editor);
+    }, function () {
+      reject(`Error loading resource files. Please check browser console.`);
+    });
   });
 }

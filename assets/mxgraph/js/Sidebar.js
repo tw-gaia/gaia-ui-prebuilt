@@ -167,7 +167,7 @@ Sidebar.prototype.thumbBorder = 2;
 if (urlParams['sidebar-entries'] != 'large') {
   Sidebar.prototype.thumbPadding = (document.documentMode >= 5) ? 0 : 1;
   Sidebar.prototype.thumbBorder = 1;
-  Sidebar.prototype.thumbWidth = 32;
+  Sidebar.prototype.thumbWidth = 48;
   Sidebar.prototype.thumbHeight = 30;
   Sidebar.prototype.minThumbStrokeWidth = 1.3;
   Sidebar.prototype.thumbAntiAlias = true;
@@ -181,7 +181,7 @@ Sidebar.prototype.sidebarTitleSize = 9;
 /**
  * Specifies if titles in the sidebar should be enabled.
  */
-Sidebar.prototype.sidebarTitles = false;
+Sidebar.prototype.sidebarTitles = true;
 
 /**
  * Specifies if titles in the tooltips should be enabled.
@@ -829,21 +829,21 @@ Sidebar.prototype.insertSearchHint = function (div, searchTerm, count, page, res
  */
 Sidebar.prototype.addGeneralPalette = function (expand) {
   var fns = [
-    this.createVertexTemplateEntry('rounded=0;whiteSpace=wrap;html=1;fillColor=#f9c7c7', 120, 30, '', '阶段', null, null, ''),
-    this.createVertexTemplateEntry('rounded=0;whiteSpace=wrap;html=1;fillColor=#f8ecc6', 120, 60, '', '角色组', null, null, ''),
-    this.createVertexTemplateEntry('rounded=0;whiteSpace=wrap;html=1;fillColor=#c8e3f6', 120, 60, '', '行为', null, null, ''),
-    this.createVertexTemplateEntry('rounded=0;whiteSpace=wrap;html=1;fillColor=#dff7c6', 120, 60, '', '业务补充', null, null, ''),
-    this.createVertexTemplateEntry('rounded=0;whiteSpace=wrap;html=1;fillColor=#dbd6ff', 120, 60, '', '时长', null, null, ''),
-    this.createVertexTemplateEntry('rounded=0;whiteSpace=wrap;html=1;fillColor=#f8c7e8', 120, 60, '', '系统能力', null, null, ''),
-    this.createVertexTemplateEntry('rounded=0;whiteSpace=wrap;html=1;fillColor=#f7dec6', 120, 60, '', '变量', null, null, ''),
-    this.createVertexTemplateEntry('rounded=0;whiteSpace=wrap;html=1;fillColor=#d3f7ff', 120, 60, '', '变化点', null, null, ''),
-    this.createVertexTemplateEntry('rounded=0;whiteSpace=wrap;html=1;fillColor=#ebebeb', 120, 60, '', '其它', null, null, ''),
+    this.createVertexTemplateEntry('rounded=0;whiteSpace=wrap;html=1;fillColor=#f9c7c7', 120, 30, '', '阶段', null, true, ''),
+    this.createVertexTemplateEntry('rounded=0;whiteSpace=wrap;html=1;fillColor=#f8ecc6', 120, 60, '', '角色组', null, true, ''),
+    this.createVertexTemplateEntry('rounded=0;whiteSpace=wrap;html=1;fillColor=#c8e3f6', 120, 60, '', '行为', null, true, ''),
+    this.createVertexTemplateEntry('rounded=0;whiteSpace=wrap;html=1;fillColor=#dff7c6', 120, 60, '', '业务补充', null, true, ''),
+    this.createVertexTemplateEntry('rounded=0;whiteSpace=wrap;html=1;fillColor=#dbd6ff', 120, 60, '', '时长', null, true, ''),
+    this.createVertexTemplateEntry('rounded=0;whiteSpace=wrap;html=1;fillColor=#f8c7e8', 120, 60, '', '系统能力', null, true, ''),
+    this.createVertexTemplateEntry('rounded=0;whiteSpace=wrap;html=1;fillColor=#f7dec6', 120, 60, '', '变量', null, true, ''),
+    this.createVertexTemplateEntry('rounded=0;whiteSpace=wrap;html=1;fillColor=#d3f7ff', 120, 60, '', '变化点', null, true, ''),
+    this.createVertexTemplateEntry('rounded=0;whiteSpace=wrap;html=1;fillColor=#ebebeb', 120, 60, '', '其它', null, true, ''),
     // Explicit strokecolor/fillcolor=none is a workaround to maintain transparent background regardless of current style
     this.createVertexTemplateEntry('text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;',
-      40, 20, '文本', '文本', null, null, 'text textbox textarea label'),
+      40, 20, '文本', '文本', null, false, 'text textbox textarea label'),
     this.createVertexTemplateEntry('text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;', 190, 120,
       '<h1>标题</h1><p>这里可以写一些正文文字。</p>',
-      '文本框', null, null, 'text textbox textarea'),
+      '文本框', null, false, 'text textbox textarea'),
   ];
   this.addPaletteFunctions('general', mxResources.get('general'), (expand != null) ? expand : true, fns);
 };
@@ -855,30 +855,30 @@ Sidebar.prototype.addMorePalette = function (expand) {
   var lineTags = 'line lines connector connectors connection connections arrow arrows ';
 
   var fns = [
-    this.createVertexTemplateEntry('rounded=1;whiteSpace=wrap;html=1;', 120, 60, '', '圆角矩形', null, null, 'rounded rect rectangle box'),
-    this.createVertexTemplateEntry('ellipse;whiteSpace=wrap;html=1;', 120, 80, '', '椭圆', null, null, 'oval ellipse state'),
-    this.createVertexTemplateEntry('whiteSpace=wrap;html=1;aspect=fixed;', 80, 80, '', '正方形', null, null, 'square'),
-    this.createVertexTemplateEntry('ellipse;whiteSpace=wrap;html=1;aspect=fixed;', 80, 80, '', '圆形', null, null, 'circle'),
-    this.createVertexTemplateEntry('shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;', 120, 60, '', '处理', null, null, 'process task'),
-    this.createVertexTemplateEntry('rhombus;whiteSpace=wrap;html=1;', 80, 80, '', '钻石', null, null, 'diamond rhombus if condition decision conditional question test'),
-    this.createVertexTemplateEntry('shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;', 120, 60, '', '平行四边形'),
-    this.createVertexTemplateEntry('shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;', 120, 80, '', '六边形', null, null, 'hexagon preparation'),
-    this.createVertexTemplateEntry('triangle;whiteSpace=wrap;html=1;', 60, 80, '', '三角形', null, null, 'triangle logic inverter buffer'),
-    this.createVertexTemplateEntry('shape=cylinder;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;', 60, 80, '', '圆柱', null, null, 'cylinder data database'),
-    this.createVertexTemplateEntry('ellipse;shape=cloud;whiteSpace=wrap;html=1;', 120, 80, '', '云', null, null, 'cloud network'),
-    this.createVertexTemplateEntry('shape=document;whiteSpace=wrap;html=1;boundedLbl=1;', 120, 80, '', '文档'),
-    this.createVertexTemplateEntry('shape=internalStorage;whiteSpace=wrap;html=1;backgroundOutline=1;', 80, 80, '', '内部存储'),
-    this.createVertexTemplateEntry('shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.05;darkOpacity2=0.1;', 120, 80, '', '立方体'),
-    this.createVertexTemplateEntry('shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;', 120, 80, '', '步骤'),
-    this.createVertexTemplateEntry('shape=trapezoid;perimeter=trapezoidPerimeter;whiteSpace=wrap;html=1;', 120, 60, '', '梯形'),
-    this.createVertexTemplateEntry('shape=tape;whiteSpace=wrap;html=1;', 120, 100, '', '磁带'),
-    this.createVertexTemplateEntry('shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;', 80, 100, '', '备注'),
-    this.createVertexTemplateEntry('shape=card;whiteSpace=wrap;html=1;', 80, 100, '', '卡片'),
-    this.createVertexTemplateEntry('shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;', 120, 80, '', '标注', null, null, 'bubble chat thought speech message'),
-    this.createVertexTemplateEntry('shape=umlActor;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;html=1;outlineConnect=0;', 30, 60, 'Actor', '角色', false, null, 'user person human stickman'),
-    this.createVertexTemplateEntry('shape=xor;whiteSpace=wrap;html=1;', 60, 80, '', '或', null, null, 'logic or'),
-    this.createVertexTemplateEntry('shape=or;whiteSpace=wrap;html=1;', 60, 80, '', '与', null, null, 'logic and'),
-    this.createVertexTemplateEntry('shape=dataStorage;whiteSpace=wrap;html=1;', 100, 80, '', '数据存储'),
+    this.createVertexTemplateEntry('rounded=1;whiteSpace=wrap;html=1;', 120, 60, '', '圆角矩形', null, true, 'rounded rect rectangle box'),
+    this.createVertexTemplateEntry('ellipse;whiteSpace=wrap;html=1;', 120, 80, '', '椭圆', null, true, 'oval ellipse state'),
+    this.createVertexTemplateEntry('whiteSpace=wrap;html=1;aspect=fixed;', 80, 80, '', '正方形', null, true, 'square'),
+    this.createVertexTemplateEntry('ellipse;whiteSpace=wrap;html=1;aspect=fixed;', 80, 80, '', '圆形', null, true, 'circle'),
+    this.createVertexTemplateEntry('shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;', 120, 60, '', '处理', null, true, 'process task'),
+    this.createVertexTemplateEntry('rhombus;whiteSpace=wrap;html=1;', 80, 80, '', '钻石', null, true, 'diamond rhombus if condition decision conditional question test'),
+    this.createVertexTemplateEntry('shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;', 120, 60, '', '平行四边形', null, true),
+    this.createVertexTemplateEntry('shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;', 120, 80, '', '六边形', null, true, 'hexagon preparation'),
+    this.createVertexTemplateEntry('triangle;whiteSpace=wrap;html=1;', 60, 80, '', '三角形', null, true, 'triangle logic inverter buffer'),
+    this.createVertexTemplateEntry('shape=cylinder;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;', 60, 80, '', '圆柱', null, true, 'cylinder data database'),
+    this.createVertexTemplateEntry('ellipse;shape=cloud;whiteSpace=wrap;html=1;', 120, 80, '', '云', null, true, 'cloud network'),
+    this.createVertexTemplateEntry('shape=document;whiteSpace=wrap;html=1;boundedLbl=1;', 120, 80, '', '文档', null, true),
+    this.createVertexTemplateEntry('shape=internalStorage;whiteSpace=wrap;html=1;backgroundOutline=1;', 80, 80, '', '内部存储', null, true),
+    this.createVertexTemplateEntry('shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.05;darkOpacity2=0.1;', 120, 80, '', '立方体', null, true),
+    this.createVertexTemplateEntry('shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;', 120, 80, '', '步骤', null, true),
+    this.createVertexTemplateEntry('shape=trapezoid;perimeter=trapezoidPerimeter;whiteSpace=wrap;html=1;', 120, 60, '', '梯形', null, true),
+    this.createVertexTemplateEntry('shape=tape;whiteSpace=wrap;html=1;', 120, 100, '', '磁带', null, true),
+    this.createVertexTemplateEntry('shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;', 80, 100, '', '备注', null, true),
+    this.createVertexTemplateEntry('shape=card;whiteSpace=wrap;html=1;', 80, 100, '', '卡片', null, true),
+    this.createVertexTemplateEntry('shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;', 120, 80, '', '标注', null, true, 'bubble chat thought speech message'),
+    this.createVertexTemplateEntry('shape=umlActor;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;html=1;outlineConnect=0;', 30, 60, 'Actor', '角色', false, true, 'user person human stickman'),
+    this.createVertexTemplateEntry('shape=xor;whiteSpace=wrap;html=1;', 60, 80, '', '或', null, true, 'logic or'),
+    this.createVertexTemplateEntry('shape=or;whiteSpace=wrap;html=1;', 60, 80, '', '与', null, true, 'logic and'),
+    this.createVertexTemplateEntry('shape=dataStorage;whiteSpace=wrap;html=1;', 100, 80, '', '数据存储', null, true),
     this.addEntry('curve', mxUtils.bind(this, function () {
       var cell = new mxCell('', new mxGeometry(0, 0, 50, 50), 'curved=1;endArrow=classic;html=1;');
       cell.geometry.setTerminalPoint(new mxPoint(0, 50), true);
@@ -1732,6 +1732,8 @@ Sidebar.prototype.createThumb = function (cells, width, height, parent, title, s
     div.style.color = '#303030';
     div.style.textAlign = 'center';
     div.style.whiteSpace = 'nowrap';
+    div.style.textOverflow = 'ellipsis';
+    div.style.overflow = 'hidden';
 
     if (mxClient.IS_IE) {
       div.style.height = (this.sidebarTitleSize + 12) + 'px';

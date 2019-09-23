@@ -624,7 +624,7 @@ BaseFormatPanel.prototype.createTitle = function (title) {
  */
 BaseFormatPanel.prototype.createStepper = function (input, update, step, height, disableFocus, defaultValue, isFloat) {
   step = (step != null) ? step : 1;
-  height = (height != null) ? height : 8;
+  height = (height != null) ? height : 10;
 
   if (mxClient.IS_QUIRKS) {
     height = height - 2;
@@ -1133,7 +1133,7 @@ BaseFormatPanel.prototype.createRelativeOption = function (label, key, width, ha
     mxEvent.consume(evt);
   });
 
-  var input = this.addUnitInput(div, '%', 20, width, update, 10, -15, handler != null);
+  var input = this.addUnitInput(div, '%', 20, width, update, 10, -19, handler != null);
 
   if (key != null) {
     var listener = mxUtils.bind(this, function (sender, evt, force) {
@@ -4797,7 +4797,7 @@ DiagramFormatPanel.prototype.addGridOption = function (container) {
   if (mxClient.IS_SVG) {
     input.style.marginTop = '-2px';
     input.style.right = '84px';
-    stepper.style.marginTop = '-16px';
+    stepper.style.marginTop = '-20px';
     stepper.style.right = '72px';
 
     var panel = this.createColorOption(mxResources.get('grid'), function () {
